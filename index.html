@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Anton|PT+Sans|Eczar" rel="stylesheet"><title>Young Red Riding Hood</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: 'Eczar', serif; margin-top: 0 }
+.mySlides {display: none}
+img {vertical-align: middle;}
+.title{
+  font-family: 'Anton', sans-serif;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+}
+/* Slideshow container */
+.slideshow-container {
+  width: 45%;
+  position: absolute;
+  margin: 20px;
+}
+#story {
+    margin-left:52%; 
+    margin-top: 20px;
+    width:45%;
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: black;
+    margin-top: 30px;
+}
+.zoomin{
+top: 20%;
+cursor: pointer;
+  position: absolute; 
+  width: auto;
+  padding: 8px;
+  color: white;
+  font-size: 22px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background-color: grey;
+  border: none;
+  visibility: visible;
+
+}
+.zoomout{
+top: 20%;
+cursor: pointer;
+  position: absolute; 
+  width: auto;
+  padding: 8px;
+  font-size: 22px;
+  color: white;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+ background-color: grey;
+  border: none;
+  visibility: visible;
+  right: 0;
+
+}
+
+/* Centered text */
+.centered {
+    margin-left: 10px;
+    margin-right: 60px;
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+ .leftb, .rightb{
+cursor: pointer;
+  position: absolute;
+  top: 35%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background-color: grey;
+  opacity: 70%;
+  border: none;
+  right: 0;
+  visibility: hidden;
+}
+.startb{
+top: 80%;
+cursor: pointer;
+  position: absolute;
+ 
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+ background-color: grey;
+  opacity: 70%;
+  border: none;
+  visibility: visible;
+
+}
+.checkb{
+top: 80%;
+cursor: pointer;
+  position: absolute;
+
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+ background-color: grey;
+  opacity: 70%;
+   border: none;
+  visibility: hidden;
+  right: 0;
+}
+.rightb{
+  top:65%;
+}
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+.moralb{
+  border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  background-color: #4CAC50;
+  color: white;
+   transition-duration: 0.4s;
+  margin-top: 50px;
+  cursor: not-allowed;
+
+  opacity: 0.6;
+}
+.moralb:hover {
+    background-color: #009933; /* Green */
+ 
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover, .leftb:hover, .rightb:hover, .checkb:hover, .startb:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body style="background-color:black">
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+      <p><b>Nothing is fair in this world. You might as well get that straight right now.</b><br><i>- Sue Monk Kidd, The Secret Life of Bees</i></p>
+  <p>Nothing <i>is</i> fair in this world. While some reach the pinnacle of victory without putting in the least bit of effort, some lose despite giving everything they have.</p>
+  <p>THE END</p>
+
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+
+</div>
+<div style="display:inline-block;">
+<div id="story-pics" class="slideshow-container">
+<div class="mySlides">
+  <img src="Initial/1.png" style=" display:inline-block; width:100%">
+</div>
+
+<div class="mySlides">
+  <img src="Initial/2.png" style="width:100%">
+</div>
+
+<div class="mySlides">
+  <img src="Initial/3.png" style="width:100%">
+</div>
+
+<div class="mySlides">
+  <img src="Initial/3.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/4.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/5.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/6.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/7.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/8.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/9.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/10.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/11.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Initial/12.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/13.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/14.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/15.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/16.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/17.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/18.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/19.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/20.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/21.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/22.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/23.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/24.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/25.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/26.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/27.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/28.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Left/29.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/13.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/14.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/15.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/wolf.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/16.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/17.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/18.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/19.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/20.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/21.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/22.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/23.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/24.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/25.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/26.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/27.png" style="width:100%">
+</div>
+<div class="mySlides">
+  <img src="Right/28.png" style="width:100%">
+</div>
+
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<button id="lbut" class="leftb" onclick="plusSlides(1)">Go Left</button>
+<button id="rbut" class="rightb" onclick="plusSlides(18)">Go Right</button>
+<button id="sbut" class="startb" onclick="plusSlides('s')">Start</button>
+<button id="cbut" class="checkb" onclick="plusSlides('c')">Choose Again</button>
+<button id="zin" class="zoomin" onclick="zoomIn()"><b>Zoom In</b></button>
+<button id="zout" class="zoomout" onclick="zoomOut()"><b>Zoom Out</b></button>
+<a id="nbut" class="next" onclick="plusSlides('n')">&#10095;</a>
+
+</div>
+
+<div id="story" class="container">
+  <img src="bg.png" alt="Bg" style="width:100%;">
+  <div id="story-area" class="centered">
+  </div>
+</div>
+</div>
+<br>
+<script>
+  var lvisit=0,rvisit=0;
+var slideIndex = 1;
+var time=0;
+showSlides(slideIndex);
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+function blockIt() {
+  if(lvisit==1&&rvisit==1)
+    modal.style.display = "block";
+}
+function zoomIn() {
+    document.getElementById("story").style.display = "none";
+    document.getElementById("story-pics").style.width = "100%";
+
+}
+function zoomOut() {
+  document.getElementById("story-pics").style.width = "45%";
+  document.getElementById("story").style.display = "block";
+
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+function plusSlides(n) {
+  if(n=='n')
+  {
+    if(slideIndex==13)
+      return;
+    
+    else
+      n=1;
+  }
+  if(n<0&&slideIndex==1)
+    return;
+  if(slideIndex>=13)
+  {
+    time=1;
+  }
+  if(n=='s')
+  {
+    slideIndex=1;
+     if(time!=1)document.getElementById("cbut").style.visibility = "hidden";
+
+     document.getElementById("lbut").style.visibility = "hidden";
+     document.getElementById("rbut").style.visibility = "hidden";
+     document.getElementById("nbut").style.visibility = "visible"; 
+    showSlides(slideIndex);
+    return;
+  }
+  if(n=='c')
+  {
+    document.getElementById("lbut").style.visibility = "visible";
+     document.getElementById("rbut").style.visibility = "visible";
+     document.getElementById("nbut").style.visibility = "hidden";
+    slideIndex=13;
+    showSlides(slideIndex);
+    return;
+  }
+  if(slideIndex==3&&n==1)
+  {
+    n=2;
+  }
+   if(slideIndex==4&&n==-1)
+  {
+    n=-2;
+  }
+  if(n>1&&slideIndex>30)
+    return;
+  if(n==1&&slideIndex==47)
+    return;
+  if(n==-1)
+  {
+    if(slideIndex==31)
+    {
+      slideIndex-=17;
+    }
+  }
+  if(n==1)
+  {
+    if(slideIndex==30)
+      return;
+  }
+  if(slideIndex+n>=13)
+  {
+    document.getElementById("cbut").style.visibility = "visible";
+  }
+  else{
+    if(time!=1)document.getElementById("cbut").style.visibility = "hidden";
+  }
+  showSlides(slideIndex += n);
+
+  if(slideIndex==13)
+  {
+    document.getElementById("lbut").style.visibility = "visible";
+     document.getElementById("rbut").style.visibility = "visible";
+     document.getElementById("nbut").style.visibility = "hidden";
+  }
+  else
+  {
+   document.getElementById("lbut").style.visibility = "hidden";
+     document.getElementById("rbut").style.visibility = "hidden";
+     document.getElementById("nbut").style.visibility = "visible"; 
+  }
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+ 
+}
+
+function showSlides(n) {
+
+
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = slides.length}    
+  if (n < 1) {slideIndex = 1}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  slides[slideIndex-1].style.display = "block";
+  if(n==1) {
+    document.getElementById("story-area").innerHTML = "<h2>Young Red Riding Hood</h2><i><b>Synopsis:</b> A branching story with a young lady, Red Riding Hood as the protagonist. She ventures into the woods at twilight to take supper for her sick grandmother who lives in a cottage deep into the forest. Will she come back alive?</i><br><br>Click the <b>next (&#10095)</b> button to start reading and the<br> <b>back (&#10094)</b> button to retrace your steps.<br> Use the <b>Zoom In</b> and <b>Zoom Out</b> buttons to get a better view of the map. <br>You can click on <b>Start</b> at any time to take you back to this screen.";
+  }  
+  if(n==2) {
+    document.getElementById("story-area").innerHTML = "It is a pleasant evening as Young Red Riding Hood steps out of her house to visit her grandmother who lives in the woods.";
+  } 
+  if(n==3 || n==4) {
+    document.getElementById("story-area").innerHTML = "The sky is a bright orange against the setting sun and the young lady cannot help but sing with joy, as she merrily makes her way along the path that she was sure she knew well, with a basket of warm supper for her ailing grandmother swinging from her arm.";
+  } 
+   if(n==5 || n==6) {
+    document.getElementById("story-area").innerHTML = "With the sun slowly sinking into the horizon, Red Riding Hood ventures closer and closer to the forest, finally reaching the dark and thorny bushes that border the forest.";
+  } 
+  if(n==7) {
+    document.getElementById("story-area").innerHTML = "She hesitantly steps under the towering canopy of trees that let little light through, suddenly aware of the eeriness that surrounds the forest.";
+  } 
+   if(n==8) {
+    document.getElementById("story-area").innerHTML = "As she proceeds further, the woods seem to come alive before her. She hears the soft rustling of leaves, the chirping of birds returning to their nests and the faint sounds of wild beasts awaiting their prey.";
+  } 
+  if(n==9) {
+    document.getElementById("story-area").innerHTML = "In the midst of it all, she hears the hooting of an owl, which sounds eerily like a warning to her."+"<br><br><b><i>"+"\“Dear little child, with gifts to share"+"<br>"+"And a happy heart, free of care"+"<br>"+"Heed me, turn back now or beware"+"<br>"+"For this path before you leads to despair\”"+"<br></i></b>";
+  } 
+  if(n==10||n==11||n==12) {
+    document.getElementById("story-area").innerHTML = "The warning terrifies her, yet she knows that she cannot turn back now. For her grandmother’s sake, she needs to muster the courage to carry on her way and overcome obstacles as and when they arrive.";
+  } 
+  if(n==13) {
+    document.getElementById("story-area").innerHTML = "Plunging into the unknown, she hears the faint sounds of wood hitting wood.  Following this sound, she comes across a broken sign board pointing to "+"<b>" +"Black Thorn"+"</b>" +", the usual path she always follows. The sign board however, causes her more concern than relief, for she wonders whether the broken signboard is accurate or merely got positioned that way by the strong winds the night before.<br><br><i>Choose to go either <b>left</b> or <b>right</b></i>. <br>You can click on <b>Choose Again</b> to come back to this checkpoint at any time.";
+  } 
+  if(n==14|| n==15) {
+    document.getElementById("story-area").innerHTML = "As Red Riding Hood broods over the choice that lies ahead of her, she vaguely remembers taking a left somewhere along her path the last time she had come to visit her grandmother. Anxiously hoping that it was the right path, she walks deeper into the forest. To her relief, not far from the signboard, there are footprints sunk deep in the mud. She thinks about how her grandmother had often told her she lived alone in the forest without much company and she assumes the footsteps were of those who visited her grandmother in the last few days. Feeling reassured, she continues along the path.";
+  }
+  if(n==16|| n==17) {
+    document.getElementById("story-area").innerHTML = "As Red Riding Hood walks further along the path she chose, she is filled with a growing sense of uneasiness. Along the way, she is fascinated by a bunch of blue flowers faintly glowing in the twilight, which she correctly identifies as a rare variety of Hyacinths. This discovery fills her with dread as she realizes that these flowers only grow in a secluded part of the woods, very far away from the path she had to follow.";
+  } 
+  if(n==18) {
+    document.getElementById("story-area").innerHTML = "She calms herself down and decides to continue further along the path, in hopes of coming across the right trail, blaming herself for making the wrong decision.";
+  } 
+  if(n==19) {
+    document.getElementById("story-area").innerHTML = "Suddenly, she hears a faint ruffle coming from right behind her and turns sharply to see a massive wolf with piercing violet eyes gleaming in the moonlight. It prowls closer softly, assured of its kill. She panics and frantically looks around for some instrument of self defence.";
+  } 
+   if(n==20) {
+    document.getElementById("story-area").innerHTML = "She spots an axe stuck to the trunk of a tree nearby.";
+  }
+  if(n==21) {
+    document.getElementById("story-area").innerHTML = "She throws her basket at the wolf and uses that moment of confusion to grab the axe, and hack wildly at the beast's neck. As the wolf collapses, she grabs her basket and rushes away.";
+  }
+  if(n==22|| n==23) {
+    document.getElementById("story-area").innerHTML = "Fear and terror pulsing through her veins, she keeps running as fast as her legs can carry her, desperate to reach the safety of her grandmother’s cottage.";
+  }
+  if(n==24|| n==25|| n==26|| n==27) {
+    document.getElementById("story-area").innerHTML = "In the distance, she sees a huge structure which she identifies as the deserted castle her grandmother often spoke of. Elated to realize that she is so near to her destination, she carries on with a spring in her step.";
+  }
+  if(n==28) {
+    document.getElementById("story-area").innerHTML = "She walks on, as swift as her weary legs could carry her. As she spots her grandmother's quaint little cottage surrounded by shrubs and roses, she cannot help but smile. Almost at the door, she slows down a little, savoring the beauty of her grandma's garden.";
+  }
+  if(n==29) {
+    document.getElementById("story-area").innerHTML = "Suddenly she feels the brute force of rough fingers on her neck, choking her. She struggles in vain as the strong hands refuse to let go. As she tries to grab at the hands, she feels a sharp object pierce her from behind as the iron grip lets go. She collapses to the ground, bleeding fast, as a man walks away with her gold chain.";
+  }
+    if(n==30) { 
+document.getElementById("story-area").innerHTML = "The last thing she hears before the world fades away is the clock striking 7.<br><br><br><b>Complete both branches to read the moral.</b><br>"+"<button id=\"mbut\" class=\"moralb\" onclick=\"blockIt()\"><b>The Moral</b></button>";
+
+      rvisit=1;
+      if(lvisit==1&&rvisit==1)
+  {
+    document.getElementById("mbut").style.cursor="pointer";
+     document.getElementById("mbut").style.opacity="1";
+  }
+    
+  }
+  if(n==31) {
+    document.getElementById("story-area").innerHTML = "Red Riding Hood ponders over the choice that she must make, and after little thought, decides to choose the path that leads deep into the right side of the forest."+"<br><br><i>"+" \‘How could the right path be wrong?\’"+"</i>"+" she asks herself and continues along the path, hoping to reach the warm comforts of her grandmother\’s cottage soon.";
+  }
+  if(n==32) {
+    document.getElementById("story-area").innerHTML = "As she walks along the path she chose, she hears someone panting.";
+  }
+  if(n==33) {
+    document.getElementById("story-area").innerHTML = "She turns around to find a wolf, violet eyes glowing with mischief. Without a care in the world, she greets the wolf merrily."+"<br><br>"+"\“Hello Mr. Wolf. What are you doing out so late? Won't your mother await your return?\”"+"<br><br><i>"+"\“No young lady, I have no mother!\”"+"<br><br></i>"+"\“Oh poor you, I am so sorry. You can come with me to meet my grandma. She'll take care of you.\”";
+  }
+  if(n==34){
+    document.getElementById("story-area").innerHTML = "\“How kind you are to invite me over! However, I have something I need to do. Why dont you give her my regards and give her some roses for me?\”"+"<br><br></i>"+"\“That\'s a wonderful idea! I\’ll do just that\” said Red Riding Hood as she goes to pick roses."+"<br><br>"+"The wolf bids her goodbye with a growling stomach and a watering mouth.";
+  }
+  if(n==35) {
+    document.getElementById("story-area").innerHTML = " Red Riding Hood walks around, her keen eyes searching for beautiful red roses that would bring a smile to her grandmother\’s face.";
+  }
+    if(n==36) {
+    document.getElementById("story-area").innerHTML = "She sees jasmines that are as white as snow. She sees tulips that are orange like the summer sun. But to her utmost dismay, she could not find any roses that rivaled the ones which grew in her grandmother\’s gardens.";
+  }
+    if(n==37||n==38||n==39) {
+    document.getElementById("story-area").innerHTML = " Disheartened that she could not bring a gift of her own to her grandmother, she continues along the path.";
+  }
+  if(n==40) {
+    document.getElementById("story-area").innerHTML = " As she reaches her grandmother\’s cottage, she sees the door slightly ajar. Assuming the wind to be the culprit, she steps inside.";
+  }
+if(n==41) {
+    document.getElementById("story-area").innerHTML = "\“Grandma? Grandma? Where are you?\”"+"<br><br><i>"+"\“Sugar, come meet me in the bedroom!\”"+"</i><br><br>"+"Slightly befuddled by the unusual endearment, she makes her way to the bedroom and sees her grandmother lying on the bed under the sheets.";
+  }
+if(n==42) {
+    document.getElementById("story-area").innerHTML = "\"Granny, what big eyes you have!\”"+"<br><br><i>"+"\“All the better to see you with!\”";
+  }
+if(n==43) {
+    document.getElementById("story-area").innerHTML = "\"Granny, what big ears you have!\”"+"<br><br><i>"+"\“All the better to hear you with!\”";
+  }
+if(n==44) {
+    document.getElementById("story-area").innerHTML = "\"Granny, what big nose you have!\”"+"<br><br><i>"+"\“All the better to smell you with!\”";
+  }
+if(n==45) {
+    document.getElementById("story-area").innerHTML = "\"Granny, what big teeth you have!\”"+"<br><br><i>"+"\“All the better to eat you with!\”"+"</i>"+" cries the wolf."+"<br><br>"+" Red Riding Hood shrieks at the top of her voice.";
+  }
+if(n==46) {
+    document.getElementById("story-area").innerHTML = "  To her relief, she hears the front door open as a man rushes in with an axe in his hands. A battle of sorts ensues between the man and the wolf, which ends rather abruptly as the he lands a sharp blow on the wolf’s neck, swiftly ending his life.";
+  }
+if(n==47) {
+  document.getElementById("story-area").innerHTML = "Young Red Riding Hood thanks her savior with tears in her eyes. She mourns her grandmother\’s untimely demise as the clock strikes 7."+"<br><br><br><b>Complete both branches to read the moral.</b><br>"+"<button id=\"mbut1\" class=\"moralb\" onclick=\"blockIt()\"><b>The Moral</b></button>";
+
+  lvisit=1;
+  if(lvisit==1&&rvisit==1)
+  {
+    document.getElementById("mbut1").style.cursor="pointer";
+    document.getElementById("mbut1").style.opacity="1";
+  }
+    
+    
+  }
+
+
+}
+</script>
+
+</body>
+</html> 
